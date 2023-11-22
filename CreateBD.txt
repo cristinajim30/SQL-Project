@@ -1,0 +1,42 @@
+1. Create Database:
+
+CREATE DATABASE studentsDB;
+
+2. Create tables:
+
+CREATE TABLE matter (
+      codemat CHAR(10) NOT NULL,
+      wording CHAR(20),
+      coef FLOAT(5),
+      CONSTRAINT CODEMAT_PK PRIMARY KEY(codemat)
+	  ); 
+
+
+CREATE TABLE student (
+      numstud INT NOT NULL,
+      name CHAR(20),
+      firstname CHAR(10),
+      dateofbirth DATE,
+      street CHAR(40),
+      postalcod char(5),
+      city CHAR(20),
+      CONSTRAINT NUMSTUD_PK PRIMARY KEY(numstud)
+	  ); 
+      
+CREATE TABLE test (
+      numtest INT NOT NULL,
+      testdate DATE,
+      place CHAR(20),
+	  codemat CHAR(10),
+      CONSTRAINT NUMTEST_PK PRIMARY KEY (numtest),
+      CONSTRAINT CODEMAT_FK FOREIGN KEY (codemat) REFERENCES Matter(codemat)
+	  ); 
+      
+CREATE TABLE notation (
+    numstud INT NOT NULL,
+    numtest INT,
+    score FLOAT(10),
+    CONSTRAINT NUMSTUD_NUMTEST_PK PRIMARY KEY(NUMSTUD,NUMTEST),
+    CONSTRAINT  NUMSTUD_FK FOREIGN KEY (numstud) REFERENCES Student(numstud),
+    CONSTRAINT  NUMTEST_FK FOREIGN KEY (numtest) REFERENCES Test(numtest)
+	  ); 
