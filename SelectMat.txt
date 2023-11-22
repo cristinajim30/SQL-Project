@@ -1,0 +1,7 @@
+1. Wording and coefficient (expressed as a percentage) of each subject
+	SELECT wording, TO_CHAR(coef, 'fm00D00%') as "coefficient percentage"
+	FROM matter
+
+2. Sum of coefficients of all subject
+	SELECT SUM(coef) as suma
+	FROM MATTER;
